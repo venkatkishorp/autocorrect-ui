@@ -26,6 +26,9 @@ export class AutocorrectCardComponent {
         this.autocorrectResults = response.result.split(',')
       });
     }
+    else {
+      this.autocorrectResults = [];
+    }
   }
 
   onKeyUp(event: any): void {

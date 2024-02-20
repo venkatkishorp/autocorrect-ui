@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AutocorrectServiceService {
-  apiUrl: string = 'http://127.0.0.1:5000/';
+  apiUrl: string = 'https://autocorrect-api-fq19.onrender.com/';
 
   constructor(
     private http: HttpClient

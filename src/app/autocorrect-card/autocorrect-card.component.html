@@ -4,6 +4,9 @@
             <mat-label>Autocorrect this word</mat-label>
             <input matInput (keyup)="onKeyUp($event)" (blur)="performAutocorrect()" placeholder="Enter a word">
         </mat-form-field>
+        <div class="spinner">
+            <mat-spinner *ngIf="showSpinner"></mat-spinner>
+        </div>
         <mat-grid-list *ngIf="autocorrectResults.length > 0 && enteredWord.length > 0" cols="3" rowHeight="0.5:1">
             <mat-grid-tile *ngFor="let result of autocorrectResults">
                 <span class="word-font">{{result}}</span>

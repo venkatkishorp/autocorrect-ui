@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
 import { AutocorrectServiceService } from './services/autocorrect-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     AutocorrectServiceService

@@ -19,8 +19,8 @@ export class AutocorrectCardComponent {
    * This method is used to hit the api service to get the autocorrected words for the entered words
    */
   performAutocorrect(): void {
-    this.showSpinner = true;
     if (this.enteredWord.length > 0) {
+      this.showSpinner = true;
       this.apiService.getWordAutocorrects(this.enteredWord).subscribe((response: any) => {
         this.showSpinner = false;
         this.autocorrectResults = response.result.split(',')

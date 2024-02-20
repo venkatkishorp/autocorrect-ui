@@ -8,6 +8,7 @@ import { AutocorrectServiceService } from '../services/autocorrect-service.servi
 })
 export class AutocorrectCardComponent {
   enteredWord: string = '';
+  previousWord: string = '';
   autocorrectResults: [] = [];
   showSpinner: boolean = false;
 
@@ -15,15 +16,13 @@ export class AutocorrectCardComponent {
     private apiService: AutocorrectServiceService
   ) {}
 
-  /**
-   * This method is used to hit the api service to get the autocorrected words for the entered words
-   */
   performAutocorrect(): void {
     if (this.enteredWord.length > 0) {
       this.showSpinner = true;
       this.apiService.getWordAutocorrects(this.enteredWord).subscribe((response: any) => {
         this.showSpinner = false;
-        this.autocorrectResults = response.result.split(',')
+        this.autocorrectResults = response.result.split(',');
+        this.previousWord = this.enteredWord;
       });
     }
     else {
@@ -31,7 +30,19 @@ export class AutocorrectCardComponent {
     }
   }
 
+  /**
+   * This method is used to hit the api service to get the autocorrected words for the entered words
+   */
+  onBlurEvent(): void {
+    if (this.previousWord != this.enteredWord) {
+      this.performAutocorrect();
+    }
+  }
+
   onKeyUp(event: any): void {
     this.enteredWord = event.target.value;
+    if (this.previousWord != this.enteredWord && event.key == 'Enter') {
+      this.performAutocorrect();
+    }
   }
 }

@@ -2,7 +2,7 @@
     <form class="example-form">
         <mat-form-field class="example-full-width">
             <mat-label>Autocorrect this word</mat-label>
-            <input matInput (keyup)="onKeyUp($event)" (blur)="performAutocorrect()" placeholder="Enter a word">
+            <input matInput (keyup)="onKeyUp($event)" (blur)="onBlurEvent()" placeholder="Enter a word">
         </mat-form-field>
         <div class="spinner">
             <mat-spinner *ngIf="showSpinner"></mat-spinner>
